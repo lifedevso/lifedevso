@@ -49,7 +49,7 @@ export default function Home() {
                 height={600}
                 alt="人生发展体系"
                 className="w-full max-w-md rounded-xl shadow-xl ring-1 ring-gray-400/10"
-                src="/imgs/sections/1.png"
+                src="/imgs/sections/01.png"
               />
             </div>
             <div className="order-2 md:order-2">
@@ -144,7 +144,7 @@ export default function Home() {
                 height={600}
                 alt="人生发展体系"
                 className="w-full max-w-md rounded-xl shadow-xl ring-1 ring-gray-400/10"
-                src="/imgs/sections/2.png"
+                src="/imgs/sections/02.png"
               />
             </div>
           </div>
