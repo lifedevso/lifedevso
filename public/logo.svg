@@ -1,0 +1,10 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 人生发展的曲线 -->
+  <path d="M 30 170 Q 70 130, 100 150 T 170 50" stroke="#0284c7" fill="none" stroke-width="12"/>
+
+  <!-- 人生的各个阶段用点表示 -->
+  <circle cx="30" cy="170" r="8" fill="#f87171"/>
+  <circle cx="70" cy="133" r="8" fill="#dc2626"/>
+  <circle cx="110" cy="141" r="8" fill="#ef4444"/>
+  <circle cx="170" cy="50" r="8" fill="#b91c1c"/>
+</svg>
