@@ -293,17 +293,20 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="mt-4 text-center">
-            <p className="text-base text-gray-400 flex flex-col">
-              © 2024 • 香港知行教育科技有限公司 All rights reserved.
-              {/* <a
+          <div className="mt-4 space-y-2 text-xs text-gray-400">
+            <p >Copyright © 2024 人生发展体系. All Rights Reserved.</p>
+            <p >香港知行教育科技有限公司</p>
+            <p className="flex gap-1 items-center">
+              深圳知行合一教育科技有限公司
+              <span>|</span>
+              <a
                 href="https://beian.miit.gov.cn/"
                 target="_blank"
                 rel="noreferrer"
                 className="cursor-pointer"
               >
-                粤ICP备2024292309号-1
-              </a> */}
+                粤ICP备2024292309号-2
+              </a>
             </p>
           </div>
         </div>
