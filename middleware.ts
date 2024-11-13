@@ -11,7 +11,7 @@ import { NextRequest, NextResponse } from "next/server";
 export default async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith("/user")) {
     const session = await auth();
-    if (!session) {
+    if (!session?.user) {
       const url = new URL("/login", request.url);
       url.searchParams.set("callbackUrl", request.nextUrl.pathname);
       return NextResponse.redirect(url);
@@ -20,7 +20,7 @@ export default async function middleware(request: NextRequest) {
 
   if (request.nextUrl.pathname.startsWith("/login")) {
     const session = await auth();
-    if (session) {
+    if (session?.user) {
       return NextResponse.redirect(new URL("/user/accounts", request.url));
     }
   }
