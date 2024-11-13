@@ -1,0 +1,18 @@
+{
+  "Metadata": {
+    "title": "人生发展体系",
+    "description": "借助人生发展体系，通过高效的工具和方法，实现全面的个人成长，提升生活的质量与深度。"
+  },
+  "GlobalError": {
+    "title": "Something went wrong!",
+    "reset": "Try again"
+  },
+  "UserMenu": {
+    "Accounts": "Accounts",
+    "Orders": "Orders",
+    "LogOut": "Log Out"
+  },
+  "NotFoundPage": {
+    "title": "Not Found Page"
+  }
+}
