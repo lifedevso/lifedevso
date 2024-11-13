@@ -8,7 +8,7 @@
     "reset": "重试"
   },
   "UserMenu": {
-    "Accounts": "账号绑定",
+    "Accounts": "账号信息",
     "Orders": "订单记录",
     "LogOut": "退出登录"
   },

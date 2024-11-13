@@ -25,7 +25,7 @@ function UserLayout({ children }: PropsWithChildren) {
   const [userMenuItems] = useUserMenu();
 
   return (
-    <div className="relative mx-auto w-full max-w-container flex-1 flex px-4 sm:px-6 lg:px-8">
+    <div className="relative mx-auto w-full max-w-container min-h-screen flex-1 flex px-4 sm:px-6 lg:px-8">
       <aside className="z-10 flex mr-4 sm:mr-6 lg:mr-8">
         <div className="h-full overflow-y-auto px-3 py-4 dark:bg-gray-800 border-r">
           <ul className="space-y-2">

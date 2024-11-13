@@ -21,14 +21,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-5xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-primary mb-6 drop-shadow-md">
-              启航你的人生发展之旅
+              加入人生发展体系大会员
             </h2>
             <p className="text-xl sm:text-2xl text-muted-foreground mb-8">
               借助人生发展体系，通过高效的工具和方法，实现全面的个人成长，提升生活的质量与深度。
             </p>
             <div className="flex flex-row justify-center gap-4">
               <Link target="_blank" href={url}>
-                <Button>联系我们</Button>
+                <Button>立刻加入</Button>
               </Link>
             </div>
           </div>
@@ -226,11 +226,11 @@ export default function Home() {
               迫不及待想开始吗？
             </h2>
             <p className="mt-6 text-xl leading-8 opacity-90 text-muted-foreground">
-              立即联系我们，开启你的个人成长之旅。
+              立即加入我们，开启你的个人成长之旅。
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link target="_blank" href={url}>
-                <Button>联系我们</Button>
+                <Button>立刻加入</Button>
               </Link>
             </div>
             <p className="mt-6 text-sm opacity-75 text-muted-foreground"></p>
