@@ -12,6 +12,7 @@ import {
 
 const url = "https://github.com/lifedevso/lifedevso/issues";
 
+export const runtime = 'edge';
 export default function Home() {
   return (
     <>
