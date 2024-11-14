@@ -10,7 +10,7 @@ import {
   WorkflowIcon,
 } from "lucide-react";
 
-const url = "https://github.com/lifedevso/lifedevso/issues";
+const url = "/join-member";
 
 export const runtime = "edge";
 export default function Home() {
@@ -27,8 +27,8 @@ export default function Home() {
               借助人生发展体系，通过高效的工具和方法，实现全面的个人成长，提升生活的质量与深度。
             </p>
             <div className="flex flex-row justify-center gap-4">
-              <Link target="_blank" href={url}>
-                <Button>联系我们</Button>
+              <Link href={url}>
+                <Button>立刻开始</Button>
               </Link>
             </div>
           </div>
@@ -229,8 +229,8 @@ export default function Home() {
               立即联系我们，开启你的个人成长之旅。
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link target="_blank" href={url}>
-                <Button>联系我们</Button>
+              <Link href={url}>
+                <Button>立刻开始</Button>
               </Link>
             </div>
             <p className="mt-6 text-sm opacity-75 text-muted-foreground"></p>

@@ -50,16 +50,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                       href="https://lifedevso.notion.site/13e6b503659380738c37dfbec8574ee9"
                       className="hover:underline text-gray-600 hover:text-gray-800"
                     >
-                      隐私政策
-                    </Link>
-                  </li>
-                  <li className="mt-2">
-                    <Link
-                      target="_blank"
-                      href="https://lifedevso.notion.site/13e6b503659380258774c4a0c69024cf"
-                      className="hover:underline text-gray-600 hover:text-gray-800"
-                    >
-                      服务条款
+                      合约条款及细则
                     </Link>
                   </li>
                 </ul>
