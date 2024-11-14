@@ -32,7 +32,7 @@ const pricingList: PricingProps[] = [
     popular: 1,
     price: 6980,
     nowPrice: 3980,
-    description: "人生发展年度会员",
+    description: "让我们用一套系统，重新定义你的下一个10年",
     buttonText: "立刻加入",
     benefitList: [
       "一年不少于 20 场直播",
@@ -73,9 +73,12 @@ export const Pricing = () => {
                   </Badge>
                 ) : null}
               </CardTitle>
-              <div>
-                <span className="text-3xl font-bold">${pricing.price}</span>
-                <span className="text-muted-foreground"> /month</span>
+              <div className="flex items-center space-x-2">
+                <span className="text-xl text-muted-foreground line-through">
+                  ¥{pricing.price}
+                </span>
+                <span className="text-3xl font-bold">¥{pricing.nowPrice}</span>
+                <span className="text-muted-foreground"> /年</span>
               </div>
 
               <CardDescription>{pricing.description}</CardDescription>
