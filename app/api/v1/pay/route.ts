@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
 
     const response = await fetch(`${API_NICE_URL}/pay/transactions`, {
         method: "POST",
-        body: JSON.stringify({ user: session.user, type, productIds: [1] }),
+        body: JSON.stringify({ user: session.user, type, productIds: [3] }),
         headers: {
             "Content-Type": "application/json",
         },
