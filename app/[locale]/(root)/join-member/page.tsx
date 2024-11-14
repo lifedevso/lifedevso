@@ -15,8 +15,9 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Team } from "./Team";
+import { Pricing } from "./Pricing";
 
-const url = "https://github.com/lifedevso/lifedevso/issues";
+const url = "#pricing";
 
 const userCommitList = [
   {
@@ -111,7 +112,7 @@ export default function Home() {
               个人发展，一年顶十年。
             </p>
             <div className="flex flex-row justify-center gap-4">
-              <Link target="_blank" href={url}>
+              <Link href={url}>
                 <Button>立刻加入</Button>
               </Link>
             </div>
@@ -299,7 +300,7 @@ export default function Home() {
               让我们用一套系统，重新定义你的下一个10年
             </p>
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link target="_blank" href={url}>
+              <Link href={url}>
                 <Button>立刻加入</Button>
               </Link>
             </div>
@@ -307,6 +308,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <Pricing />
     </>
   );
 }
