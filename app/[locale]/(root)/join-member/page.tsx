@@ -14,6 +14,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Team } from "./Team";
 
 const url = "https://github.com/lifedevso/lifedevso/issues";
 
@@ -92,30 +93,6 @@ AI对于知识工作者是个非常好的助手。自己也在用，但是，如
 
 这次训练营的质量比之前的课程要高出了很多很多。能感觉到欢喜老师的用心。能够遇到欢喜这样，能倾囊相授的好老师，不容易。
 `,
-  },
-];
-
-const founderList = [
-  {
-    name: "欢喜",
-    avatar: "/imgs/founder/1.png",
-    slug: "人生发展体系创始人 / 见感思行提出者",
-    description:
-      "我就想一步一脚印，解决自己问题的同时，也帮其他人解决相似问题，人生发展过程中，",
-  },
-  {
-    name: "艾木",
-    avatar: "/imgs/founder/2.png",
-    slug: "人生发展体系合伙人",
-    description:
-      "我就想一步一脚印，解决自己问题的同时，也帮其他人解决相似问题，人生发展过程中，",
-  },
-  {
-    name: "大胜",
-    avatar: "/imgs/founder/3.png",
-    slug: "人生发展体系合伙人",
-    description:
-      "我就想一步一脚印，解决自己问题的同时，也帮其他人解决相似问题，人生发展过程中，",
   },
 ];
 
@@ -310,44 +287,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="py-8 sm:py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="text-center my-8">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-              人生共同发展
-            </h2>
-            <div className="mt-4 text-sm font-semibold tracking-wide"></div>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {founderList.map((item, index) => (
-              <div
-                key={index}
-                className="rounded-lg border bg-card text-card-foreground shadow-sm my-4"
-              >
-                <div className="p-6 pt-6">
-                  <blockquote>{item.description}</blockquote>
-
-                  <div className="mt-6 flex items-center gap-x-4">
-                    <span className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
-                      <Image
-                        width={40}
-                        height={40}
-                        className="aspect-square"
-                        src={item.avatar}
-                        alt={item.name}
-                      />
-                    </span>
-                    <div>
-                      <div className="font-semibold">{item.name}</div>
-                      <div className="text-zinc-600">{item.slug}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <Team />
       <section className="bg-gradient-to-t from-sky-200 to-white dark:from-sky-950 relative">
         <div className="absolute bg-[url('/_convertfast/gradient-bg-0.svg')] bg-auto bg-no-repeat inset-0 top-0 bottom-0 left-0 right-0 grayscale bg-center"></div>
         <div className="max-w-7xl mx-auto px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-32 relative z-10">
