@@ -47,7 +47,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                   <li className="mt-2">
                     <Link
                       target="_blank"
-                      href="https://life-nice.notion.site/8a1563fb3a854d0c9a802e513869b52e"
+                      href="https://lifedevso.notion.site/13e6b503659380738c37dfbec8574ee9"
                       className="hover:underline text-gray-600 hover:text-gray-800"
                     >
                       隐私政策
@@ -56,7 +56,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
                   <li className="mt-2">
                     <Link
                       target="_blank"
-                      href="https://life-nice.notion.site/29e3bcd8d3c643f89bba309f84927650"
+                      href="https://lifedevso.notion.site/13e6b503659380258774c4a0c69024cf"
                       className="hover:underline text-gray-600 hover:text-gray-800"
                     >
                       服务条款
