@@ -83,64 +83,69 @@ export const BuyButton = ({
       },
     }
   );
-  const wxPayReq = useRequest(async () => {
-    if (!user) {
-      toast({
-        title: "错误",
-        description: "请先登录",
-        variant: "destructive",
+  const wxPayReq = useRequest(
+    async () => {
+      if (!user) {
+        toast({
+          title: "错误",
+          description: "请先登录",
+          variant: "destructive",
+        });
+        return;
+      }
+      const response = await fetch("/api/v1/pay", {
+        method: "POST",
+        body: JSON.stringify({ type: "jsapi" }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
-      return;
-    }
-    const response = await fetch("/api/v1/pay", {
-      method: "POST",
-      body: JSON.stringify({ type: "jsapi" }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const resp_json: any = await response.json();
-    if (resp_json.ok === false) {
-      toast({
-        title: "错误",
-        description: resp_json.message,
-        variant: "destructive",
-      });
-      return;
-    }
-    const data = resp_json.data;
-    wx.config({
-      debug: false,
-      appId: data.appId,
-      timestamp: data.timestamp,
-      nonceStr: data.nonceStr,
-      signature: data.signature,
-      jsApiList: ["chooseWXPay"],
-    });
+      const resp_json: any = await response.json();
+      if (resp_json.ok === false) {
+        toast({
+          title: "错误",
+          description: resp_json.message,
+          variant: "destructive",
+        });
+        return;
+      }
+      const data = resp_json.data;
 
-    const payResult = await new Promise<boolean>((resolve, reject) => {
-      wx.ready(function () {
-        wx.chooseWXPay({
+      const payResult = await new Promise<boolean>((resolve, reject) => {
+        wx.config({
+          debug: false,
+          appId: data.appId,
           timestamp: data.timestamp,
           nonceStr: data.nonceStr,
-          package: data.package,
-          signType: data.signType,
-          paySign: data.paySign,
-          success: function (res) {
-            if (res.errMsg === "chooseWXPay:ok") {
-              resolve(true);
-            }
-          },
-          fail: function (res) {
-            reject(res);
-          },
+          signature: data.signature,
+          jsApiList: ["chooseWXPay"],
+        });
+        wx.ready(function () {
+          wx.chooseWXPay({
+            timestamp: data.timestamp,
+            nonceStr: data.nonceStr,
+            package: data.package,
+            signType: data.signType,
+            paySign: data.paySign,
+            success: function (res) {
+              if (res.errMsg === "chooseWXPay:ok") {
+                resolve(true);
+              }
+            },
+            fail: function (res) {
+              reject(res);
+            },
+          });
         });
       });
-    });
-    if (payResult) {
-      router.push(paysuccessUrl);
+      if (payResult) {
+        router.push(paysuccessUrl);
+      }
+    },
+    {
+      manual: true,
     }
-  });
+  );
   const req = useRequest(
     async () => {
       if (!data?.trade_no) return;
