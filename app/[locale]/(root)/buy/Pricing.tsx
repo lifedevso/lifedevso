@@ -1,5 +1,4 @@
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -50,9 +49,11 @@ const pricingList: PricingProps[] = [
 export const Pricing = () => {
   return (
     <section id="pricing" className="container py-24 sm:py-32">
-      <h2 className="text-3xl md:text-4xl font-bold text-center">立刻加入</h2>
+      <h2 className="text-2xl font-bold text-center">
+        {`95%的人在重复"朝九晚五"的奔忙，却错过了人生最关键的积累`}
+      </h2>
       <h3 className="text-xl text-center text-muted-foreground pt-4 pb-8">
-        人生发展年度会员
+        让我们用一套系统，重新定义你的下一个10年
       </h3>
       <div className="flex justify-center gap-8">
         {pricingList.map((pricing: PricingProps) => (

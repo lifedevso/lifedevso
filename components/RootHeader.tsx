@@ -48,11 +48,11 @@ export const RootHeader = ({ className, shouldShowSignInButton }: Props) => {
             <div className="flex-1"></div>
           </div>
         </div>
-        <div className="ml-auto hidden lg:flex lg:items-center">
+        {/* <div className="ml-auto hidden lg:flex lg:items-center">
           <Link href="/join-member" className="hover:underline">
             会员
           </Link>
-        </div>
+        </div> */}
         {shouldShowSignInButton && (
           <div className="ml-3 lg:ml-8 flex items-center lg:border-l lg:border-slate-900/15 lg:pl-8">
             <SignInButton />

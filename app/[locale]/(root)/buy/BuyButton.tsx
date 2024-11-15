@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import wx from "weixin-js-sdk";
 import { useRequest } from "ahooks";
 import { useRouter } from "next/navigation";
 import { QRCodeCanvas } from "qrcode.react";
@@ -111,6 +110,7 @@ export const BuyButton = ({
       }
       const data = resp_json.data;
 
+      const wx = (await import("weixin-js-sdk")).default;
       const payResult = await new Promise<boolean>((resolve, reject) => {
         wx.config({
           debug: false,
@@ -168,13 +168,14 @@ export const BuyButton = ({
 
   const handleBuy = () => {
     if (isWechat()) {
+      wxPayReq.run();
       return;
     }
-    if (user?.harvest?.id) {
-      setAlertOpen(true);
-      return;
-    }
-    run();
+    // if (user?.harvest?.id) {
+    //   setAlertOpen(true);
+    //   return;
+    // }
+    window.open("https://buy.stripe.com/9AQ9EwgJ2ckD8AU7ss", "_blank");
   };
 
   useEffect(() => {

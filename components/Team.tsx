@@ -7,7 +7,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
 import { SocialIcon } from "react-social-icons";
 
 interface TeamProps {

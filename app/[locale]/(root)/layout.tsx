@@ -14,7 +14,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
               <div className="w-full md:w-1/3 text-center md:text-left px-8">
                 <p className="uppercase mb-6 font-bold">人生发展体系</p>
                 <div className="flex flex-col">
-                  人生发展体系致力于通过高效方式推动个人成长与发展，助力每个人实现自我价值。
+                  以「产」为核心的人生发展体系。
+                  <br />
+                  个人发展，一年顶十年。
                 </div>
               </div>
               <div className="w-full md:w-1/3 text-center md:text-left px-8">
