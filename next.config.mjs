@@ -12,6 +12,15 @@ const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  redirects: async () => {
+    return [
+      {
+        source: "/join-member",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
   rewrites: async () => {
     return [
       {
