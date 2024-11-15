@@ -16,12 +16,22 @@ import {
 import { useUserMenu } from "@/hooks/useUserMenu";
 import Link from "next/link";
 import { useUser } from "@/hooks/useUser";
+import { useRouter } from "next/navigation";
+import { genAuthUrl, isWechat } from "@/lib/wx";
 
 export function SignInButton() {
+  const router = useRouter();
   const [user, isLoading] = useUser();
   const t = useTranslations("UserMenu");
 
   const [userMenuItems] = useUserMenu();
+
+  const onLogin = () => {
+    if (isWechat()) {
+      window.open(genAuthUrl("login"));
+    }
+    router.push("/login");
+  };
 
   if (isLoading) {
     return (
@@ -65,11 +75,11 @@ export function SignInButton() {
     );
   }
   return (
-    <Link
-      href="/login"
+    <div
       className="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full cursor-pointer hover:bg-muted"
+      onClick={onLogin}
     >
       <CircleUserRound size={40} />
-    </Link>
+    </div>
   );
 }

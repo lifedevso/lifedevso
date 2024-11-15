@@ -17,3 +17,7 @@ export function genAuthUrl(state: string) {
 
   return authUrl.toString() + "#wechat_redirect";
 }
+
+export function isWechat() {
+  return /MicroMessenger/i.test(window.navigator.userAgent);
+}

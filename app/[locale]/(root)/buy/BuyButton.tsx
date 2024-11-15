@@ -25,14 +25,12 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
+import { isWechat } from "@/lib/wx";
 
 interface BuyButtonProps {
   price: number;
 }
 
-function isWechat() {
-  return /MicroMessenger/i.test(window.navigator.userAgent);
-}
 // TODO: 需要跳转到支付成功页面
 const paysuccessUrl = "/user/orders";
 
