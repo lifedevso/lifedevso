@@ -19,7 +19,7 @@ enum PopularPlanType {
 interface PricingProps {
   title: string;
   popular: PopularPlanType;
-  price: number;
+  price?: number;
   nowPrice: number;
   description: string;
   buttonText: string;
@@ -27,6 +27,14 @@ interface PricingProps {
 }
 
 const pricingList: PricingProps[] = [
+  {
+    title: "Harvest 年度会员",
+    popular: 0,
+    nowPrice: 39.9,
+    description: "快速将社交软件中的信息保存到 Notion",
+    buttonText: "立刻购买",
+    benefitList: ["每日可发送30条消息", "支持多种消息格式"],
+  },
   {
     title: "人生发展年度会员",
     popular: 1,
@@ -40,9 +48,17 @@ const pricingList: PricingProps[] = [
       "社群答疑交流，根据用户问题，随时直播加餐",
       "一个专享的知识库，永不解散",
       "15 个独创的各种人生一表模板，方便你一键部署",
-      "三款自研 AI 工具免费一年使用权限",
+      "三款自研 AI 工具 会员 一年使用权限",
       "独创Notion高级自动化模板（价值699元）",
     ],
+  },
+  {
+    title: "NotionNice Plus",
+    popular: 0,
+    nowPrice: 69,
+    description: "让我们用一套系统，重新定义你的下一个10年",
+    buttonText: "立刻购买",
+    benefitList: ["支持无限制图片上传", "文章封面AI生成（10次/月）"],
   },
 ];
 
@@ -60,7 +76,7 @@ export const Pricing = () => {
           <Card
             key={pricing.title}
             className={cn(
-              "max-w-md",
+              "max-w-md flex-1",
               pricing.popular === PopularPlanType.YES
                 ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10"
                 : ""
@@ -76,9 +92,11 @@ export const Pricing = () => {
                 ) : null}
               </CardTitle>
               <div className="flex items-center space-x-2">
-                <span className="text-xl text-muted-foreground line-through">
-                  ¥{pricing.price}
-                </span>
+                {pricing.price && (
+                  <span className="text-xl text-muted-foreground line-through">
+                    ¥{pricing.price}
+                  </span>
+                )}
                 <span className="text-3xl font-bold">¥{pricing.nowPrice}</span>
                 <span className="text-muted-foreground"> /年</span>
               </div>
