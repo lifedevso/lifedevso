@@ -6,6 +6,7 @@ import { LoaderCircle, RotateCcw } from "lucide-react";
 import { useCountDown, useRequest } from "ahooks";
 import { useState } from "react";
 import Image from "next/image";
+import { genAuthUrl, isWechat } from "@/lib/wx";
 
 export function SignInPage() {
   const router = useRouter();
@@ -18,6 +19,10 @@ export function SignInPage() {
   } = useRequest(
     async () => {
       setTargetDate(undefined);
+      if (isWechat()) {
+        window.open(genAuthUrl("/"));
+        return;
+      }
       return fetch("/api/mp/get-qrcode")
         .then((res) => res.json())
         .then((data: any) => data.ticket);

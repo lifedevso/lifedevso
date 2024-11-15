@@ -56,7 +56,7 @@ const pricingList: PricingProps[] = [
     title: "NotionNice Plus",
     popular: 0,
     nowPrice: 69,
-    description: "让我们用一套系统，重新定义你的下一个10年",
+    description: "轻松将 Notion 文章发布到微信公众号",
     buttonText: "立刻购买",
     benefitList: ["支持无限制图片上传", "文章封面AI生成（10次/月）"],
   },
@@ -71,7 +71,7 @@ export const Pricing = () => {
       <h3 className="text-xl text-center text-muted-foreground pt-4 pb-8">
         让我们用一套系统，重新定义你的下一个10年
       </h3>
-      <div className="flex justify-center gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {pricingList.map((pricing: PricingProps) => (
           <Card
             key={pricing.title}

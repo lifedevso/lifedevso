@@ -16,11 +16,12 @@ import {
 import { useUserMenu } from "@/hooks/useUserMenu";
 import Link from "next/link";
 import { useUser } from "@/hooks/useUser";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { genAuthUrl, isWechat } from "@/lib/wx";
 
 export function SignInButton() {
   const router = useRouter();
+  const pathname = usePathname();
   const [user, isLoading] = useUser();
   const t = useTranslations("UserMenu");
 
@@ -28,7 +29,8 @@ export function SignInButton() {
 
   const onLogin = () => {
     if (isWechat()) {
-      window.open(genAuthUrl("login"));
+      window.open(genAuthUrl(pathname));
+      return;
     }
     router.push("/login");
   };

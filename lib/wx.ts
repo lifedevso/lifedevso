@@ -2,7 +2,7 @@ const APPID = "wxae60dbd6c186d1ba";
 
 const redirect_uri =
   process.env.NODE_ENV === "production"
-    ? "https://notion-nice.com"
+    ? "https://www.superai42.com"
     : "http://localhost:7766";
 
 export function genAuthUrl(state: string) {
