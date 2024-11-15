@@ -92,7 +92,7 @@ export const BuyButton = ({
       }
       const response = await fetch("/api/v1/pay", {
         method: "POST",
-        body: JSON.stringify({ type: "jsapi" }),
+        body: JSON.stringify({ type: "jsapi", url: window.location.href }),
         headers: {
           "Content-Type": "application/json",
         },
