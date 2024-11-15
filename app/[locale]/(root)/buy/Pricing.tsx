@@ -71,7 +71,7 @@ export const Pricing = () => {
       <h3 className="text-xl text-center text-muted-foreground pt-4 pb-8">
         让我们用一套系统，重新定义你的下一个10年
       </h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {pricingList.map((pricing: PricingProps) => (
           <Card
             key={pricing.title}

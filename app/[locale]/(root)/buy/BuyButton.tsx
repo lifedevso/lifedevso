@@ -113,14 +113,14 @@ export const BuyButton = ({
         wx.config({
           debug: false,
           appId: data.appId,
-          timestamp: data.timestamp,
+          timestamp: data.timeStamp,
           nonceStr: data.nonceStr,
           signature: data.signature,
           jsApiList: ["chooseWXPay"],
         });
         wx.ready(function () {
           wx.chooseWXPay({
-            timestamp: data.timestamp,
+            timestamp: data.timeStamp,
             nonceStr: data.nonceStr,
             package: data.package,
             signType: data.signType,

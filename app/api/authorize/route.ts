@@ -29,7 +29,7 @@ export async function GET(
 
     await signIn("wechat", {
       redirect: false,
-      wx_id: user.weixin.unionid,
+      wx_id: user.weixin.id,
     });
 
     const nextUrl = request.nextUrl.clone();
