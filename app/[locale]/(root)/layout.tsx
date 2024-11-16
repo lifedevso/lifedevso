@@ -20,7 +20,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             </div>
             <div className="w-full md:w-1/3 text-center md:text-left px-8">
               <p className="uppercase mb-6 font-bold">产品</p>
-              <ul className="mb-4">
+              <ul className="mb-4 space-y-4">
                 <li>
                   <Link
                     href="https://harvest.superai42.com/"
@@ -56,8 +56,8 @@ export default function RootLayout({ children }: PropsWithChildren) {
 
             <div className="w-full md:w-1/3 text-center md:text-left px-8">
               <p className="uppercase mb-6 font-bold">服务</p>
-              <ul className="mb-4">
-                <li className="mt-2">
+              <ul className="mb-4 space-y-4">
+                <li>
                   <Link
                     target="_blank"
                     href="https://lifedevso.notion.site/13e6b503659380738c37dfbec8574ee9"
