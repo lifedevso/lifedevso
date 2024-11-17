@@ -210,7 +210,7 @@ export default function Home() {
                   <span className="flex h-2 w-2 translate-y-1 rounded-full bg-sky-500"></span>
                   <div className="space-y-1">
                     <p className="text-md font-medium leading-none">
-                      文字可视化
+                      Shining 文字可视化
                     </p>
                     <p className="text-md text-muted-foreground">
                       将文字转化成简洁、美观的图片，可以做封面、文章、书籍插图和
