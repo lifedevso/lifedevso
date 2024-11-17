@@ -15,6 +15,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Team } from "@/components/Team";
+import { Section1, Section2 } from "@/components/Sections";
 
 const url = "/buy";
 
@@ -116,13 +117,7 @@ export default function Home() {
               </Link>
             </div>
           </div>
-          <Image
-            width={2076}
-            height={1080}
-            alt="人生发展体系"
-            src="/imgs/hero/1.jpeg"
-            className="mt-8 max-w-full md:max-w-5xl mx-auto rounded-md shadow-2xl border sm:mt-12 block dark:hidden"
-          />
+          <Section1 className="mt-8 max-w-full md:max-w-5xl mx-auto rounded-md shadow-2xl border sm:mt-12 bg-gray-800" />
         </div>
       </div>
 
@@ -182,13 +177,7 @@ export default function Home() {
         <div className="my-4 flex flex-col gap-8">
           <div className="my-4 md:my-16 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 items-center">
             <div className="order-1 md:order-1">
-              <Image
-                width={800}
-                height={600}
-                alt="人生发展体系"
-                className="w-full max-w-md rounded-xl shadow-xl ring-1 ring-gray-400/10"
-                src="/imgs/sections/01.png"
-              />
+              <Section2 className="w-full max-w-md rounded-xl shadow-xl ring-1 ring-gray-400/10 bg-gray-800" />
             </div>
             <div className="order-2 md:order-2">
               <h2 className="text-3xl font-bold tracking-tight text-primary">
