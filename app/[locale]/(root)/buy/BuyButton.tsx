@@ -169,11 +169,11 @@ export const BuyButton = ({
       wxPayReq.run();
       return;
     }
-    // if (user?.harvest?.id) {
-    //   setAlertOpen(true);
-    //   return;
-    // }
-    window.open("https://buy.stripe.com/9AQ9EwgJ2ckD8AU7ss", "_blank");
+    if (user?.lifedevso?.id) {
+      setAlertOpen(true);
+      return;
+    }
+    run();
   };
 
   useEffect(() => {
@@ -182,9 +182,27 @@ export const BuyButton = ({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
+
+  if (isLoading) {
+    const onClick = () => {
+      toast({
+        title: "提示",
+        description: "正在加载，请稍等",
+      });
+    };
+    return (
+      <Button className="w-full" onClick={onClick}>
+        {children}
+      </Button>
+    );
+  }
   return (
     <>
-      <Button className="w-full" onClick={handleBuy}>
+      <Button
+        className="w-full"
+        loading={loading || wxPayReq.loading}
+        onClick={handleBuy}
+      >
         {children}
       </Button>
 
@@ -214,9 +232,9 @@ export const BuyButton = ({
       <AlertDialog open={alertOpen} onOpenChange={setAlertOpen}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>再次购买</AlertDialogTitle>
+            <AlertDialogTitle>您已经是会员，是否继续购买？</AlertDialogTitle>
             <AlertDialogDescription>
-              您已经是会员，是否继续购买？
+              继续购买后，您的会员有效期将延长。
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

@@ -25,7 +25,12 @@ type UserInfo = User & {
     id: number;
     startDate: string;
     endDate: string;
-  }
+  };
+  lifedevso: null | {
+    id: number;
+    startDate: string;
+    endDate: string;
+  };
 };
 
 export const useUser = () => {
