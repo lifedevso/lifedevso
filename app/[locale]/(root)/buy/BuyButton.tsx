@@ -5,7 +5,6 @@ import { useRequest } from "ahooks";
 import { useRouter } from "next/navigation";
 import { QRCodeCanvas } from "qrcode.react";
 import { PropsWithChildren, useEffect, useState } from "react";
-import { useToast } from "@/hooks/use-toast";
 import { useUser } from "@/hooks/useUser";
 import { Button } from "@/components/ui/button";
 import {
@@ -26,6 +25,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { isWechat } from "@/lib/wx";
+import { useToast } from "@/hooks/use-toast";
 
 interface BuyButtonProps {
   price: number;
@@ -135,6 +135,10 @@ export const BuyButton = ({
             fail: function (res) {
               reject(res);
             },
+            cancel: function () {
+              const error = new Error("取消支付");
+              reject(error);
+            },
           });
         });
       });
@@ -144,6 +148,13 @@ export const BuyButton = ({
     },
     {
       manual: true,
+      onError: (error) => {
+        toast({
+          title: "错误",
+          description: error.message || "支付失败",
+          variant: "destructive",
+        });
+      },
     }
   );
   const req = useRequest(
@@ -167,12 +178,17 @@ export const BuyButton = ({
   );
 
   const handleBuy = () => {
-    if (isWechat()) {
-      wxPayReq.run();
-      return;
-    }
     if (user?.lifedevso?.id) {
       setAlertOpen(true);
+      return;
+    }
+    onBuy();
+  };
+
+  const onBuy = () => {
+    setAlertOpen(false);
+    if (isWechat()) {
+      wxPayReq.run();
       return;
     }
     run();
@@ -236,12 +252,12 @@ export const BuyButton = ({
           <AlertDialogHeader>
             <AlertDialogTitle>您已经是会员，是否继续购买？</AlertDialogTitle>
             <AlertDialogDescription>
-              继续购买后，您的会员有效期将延长。
+              继续购买后，您的会员有效期将延长
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>取消</AlertDialogCancel>
-            <AlertDialogAction onClick={run}>继续购买</AlertDialogAction>
+            <AlertDialogAction onClick={onBuy}>继续购买</AlertDialogAction>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
