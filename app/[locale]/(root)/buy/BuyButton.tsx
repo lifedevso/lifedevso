@@ -128,6 +128,8 @@ export const BuyButton = ({
             success: function (res) {
               if (res.errMsg === "chooseWXPay:ok") {
                 resolve(true);
+              } else {
+                reject(res);
               }
             },
             fail: function (res) {
