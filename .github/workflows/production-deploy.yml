@@ -1,0 +1,97 @@
+name: 构建并部署production
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  image-build-deployment:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://otterread.com/
+    steps:
+      -
+        name: 检出代码
+        uses: actions/checkout@v2
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      -
+        name: Docker 元信息
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ccr.ccs.tencentyun.com/lifedevso/webapp
+          tags: |
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha
+            type=raw,value=latest
+          flavor: |
+            latest=auto
+      -
+        name: 登录 Coding 制品库
+        uses: docker/login-action@v1
+        with:
+          registry: ccr.ccs.tencentyun.com
+          username: ${{ secrets.CODING_USER }}
+          password: ${{ secrets.CODING_TOKEN }}
+      -
+        name: 构建并推送
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          build-args: |
+            "NOTION_OAUTH_CLIENT_SECRET=${{ secrets.NOTION_OAUTH_CLIENT_SECRET }}"
+            "AUTH_SECRET=${{ secrets.AUTH_SECRET }}"
+      -
+        name: 部署 Production 环境
+        uses: fifsky/ssh-action@master
+        with:
+          command: |
+            cd /
+            echo -e "1.docker login start==>"
+            echo ${{ secrets.CODING_TOKEN }} | docker login ${{ vars.REGISTRY_MIRROR }} --username ${{ secrets.CODING_USER }} --password-stdin
+
+            echo -e "2.docker stop myblog container==>"
+            docker container stop ${{ vars.APP_NAME }}
+
+            echo -e "3.docker conatainer rm==>"
+            docker container rm ${{ vars.APP_NAME }}
+
+            echo -e "4.docker image rm==>"
+            docker image rm ${{ vars.REGISTRY_MIRROR }}/${{ vars.REGISTRY_NAMESPACE }}/${{ vars.APP_NAME }}:latest
+
+            echo -e "5.docker pull==>"
+            docker pull ${{ vars.REGISTRY_MIRROR }}/${{ vars.REGISTRY_NAMESPACE }}/${{ vars.APP_NAME }}:latest
+
+            echo -e "6.docker container create and start==>"
+            docker container run -d -p 3000:3000 --name ${{ vars.APP_NAME }} ${{ vars.REGISTRY_MIRROR }}/${{ vars.REGISTRY_NAMESPACE }}/${{ vars.APP_NAME }}:latest
+
+            echo -e "7.docker logout==>"
+            docker logout
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USER }}
+          pass: ${{ secrets.PASSWORD }}
+      -
+        name: 群通知
+        if: github.ref == 'refs/heads/main'
+        run: >
+          curl -X POST https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=972bdf29-4f16-46ac-9442-a5489e252f9e \
+            -H 'Content-Type: application/json' \
+            -d '{
+                  "msgtype": "markdown",
+                  "markdown": {
+                    "content": "${{ github.repository }}即将完成部署\n
+          > 分支: `${{ github.ref_name }}`\n
+          > 版本: `'${{ github.sha }}'`"
+                  }
+                }'
