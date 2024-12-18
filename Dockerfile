@@ -35,6 +35,7 @@ ARG AUTH_SECRET
 RUN echo "NOTION ---> "
 RUN echo "NOTION_OAUTH_CLIENT_SECRET=${NOTION_OAUTH_CLIENT_SECRET}" >> .env.production
 RUN echo "AUTH_SECRET=${AUTH_SECRET}" >> .env.production
+RUN echo "AUTH_TRUST_HOST=true" >> .env.production
 
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
