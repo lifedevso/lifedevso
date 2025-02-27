@@ -39,7 +39,7 @@ const pricingList: PricingProps[] = [
     title: "人生发展年度会员",
     popular: 1,
     price: 6980,
-    nowPrice: 3980,
+    nowPrice: 4980,
     description: "让我们用一套系统，重新定义你的下一个10年",
     buttonText: "立刻加入",
     benefitList: [
