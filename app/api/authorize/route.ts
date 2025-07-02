@@ -2,6 +2,11 @@ import { signIn } from "@/auth";
 import { API_NICE_URL } from "@/lib/constant";
 import { NextRequest, NextResponse } from "next/server";
 
+const origin =
+  process.env.NODE_ENV === "test"
+    ? "http://localhost:7766"
+    : "https://www.superai42.com";
+
 export async function GET(
   request: NextRequest,
   { params }: { params: { code: string; state: string } }
@@ -33,6 +38,7 @@ export async function GET(
     });
 
     const nextUrl = request.nextUrl.clone();
+    nextUrl.origin = origin;
     nextUrl.pathname = state;
     return NextResponse.redirect(nextUrl);
   } catch (error: any) {
