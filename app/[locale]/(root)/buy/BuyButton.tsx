@@ -24,7 +24,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { isWechat } from "@/lib/wx";
+import { genAuthUrl, isWechat } from "@/lib/wx";
 import { useToast } from "@/hooks/use-toast";
 
 interface BuyButtonProps {
@@ -49,7 +49,7 @@ export const BuyButton = ({
       if (!user) {
         toast({
           title: "请先登录",
-          description: "正在跳转登录页面"
+          description: "正在跳转登录页面",
         });
         router.push("/login");
         return;
@@ -84,10 +84,10 @@ export const BuyButton = ({
     async () => {
       if (!user) {
         toast({
-          title: "错误",
-          description: "请先登录",
-          variant: "destructive",
+          title: "请先登录",
+          description: "正在跳转登录页面",
         });
+        window.open(genAuthUrl("/buy"));
         return;
       }
       const response = await fetch("/api/v1/pay", {

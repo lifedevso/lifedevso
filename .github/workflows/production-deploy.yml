@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: production
-      url: https://otterread.com/
+      url: https://superai42.com/
     steps:
       -
         name: 检出代码
@@ -52,36 +52,9 @@ jobs:
           build-args: |
             "NOTION_OAUTH_CLIENT_SECRET=${{ secrets.NOTION_OAUTH_CLIENT_SECRET }}"
             "AUTH_SECRET=${{ secrets.AUTH_SECRET }}"
-      -
-        name: 部署 Production 环境
-        uses: fifsky/ssh-action@master
-        with:
-          command: |
-            cd /
-            echo -e "1.docker login start==>"
-            echo ${{ secrets.CODING_TOKEN }} | docker login ${{ vars.REGISTRY_MIRROR }} --username ${{ secrets.CODING_USER }} --password-stdin
-
-            echo -e "2.docker stop myblog container==>"
-            docker container stop ${{ vars.APP_NAME }}
-
-            echo -e "3.docker conatainer rm==>"
-            docker container rm ${{ vars.APP_NAME }}
-
-            echo -e "4.docker image rm==>"
-            docker image rm ${{ vars.REGISTRY_MIRROR }}/${{ vars.REGISTRY_NAMESPACE }}/${{ vars.APP_NAME }}:latest
-
-            echo -e "5.docker pull==>"
-            docker pull ${{ vars.REGISTRY_MIRROR }}/${{ vars.REGISTRY_NAMESPACE }}/${{ vars.APP_NAME }}:latest
-
-            echo -e "6.docker container create and start==>"
-            docker container run -d -p 3000:3000 --name ${{ vars.APP_NAME }} ${{ vars.REGISTRY_MIRROR }}/${{ vars.REGISTRY_NAMESPACE }}/${{ vars.APP_NAME }}:latest
-
-            echo -e "7.docker logout==>"
-            docker logout
-          host: ${{ secrets.HOST }}
-          user: ${{ secrets.USER }}
-          pass: ${{ secrets.PASSWORD }}
-      -
+      - name: Trigger dokploy redeploy
+        run: |
+          curl -X GET https://dokploy.superai42.com/api/deploy/iL-0UoCSICvDlaR3UDArP
         name: 群通知
         if: github.ref == 'refs/heads/main'
         run: >
