@@ -1,9 +1,9 @@
 const APPID = "wxae60dbd6c186d1ba";
 
 const redirect_uri =
-  process.env.NODE_ENV === "production"
-    ? "https://www.superai42.com"
-    : "http://localhost:7766";
+  process.env.NODE_ENV === "test"
+    ? "http://localhost:7766"
+    : "https://www.superai42.com";
 
 export function genAuthUrl(state: string) {
   const authUrl = new URL(
