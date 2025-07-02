@@ -48,10 +48,10 @@ export const BuyButton = ({
     async () => {
       if (!user) {
         toast({
-          title: "错误",
-          description: "请先登录",
-          variant: "destructive",
+          title: "请先登录",
+          description: "正在跳转登录页面"
         });
+        router.push("/login");
         return;
       }
       const resp = await fetch("/api/v1/pay", {
