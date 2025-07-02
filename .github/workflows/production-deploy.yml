@@ -55,7 +55,7 @@ jobs:
       - name: Trigger dokploy redeploy
         run: |
           curl -X GET https://dokploy.superai42.com/api/deploy/iL-0UoCSICvDlaR3UDArP
-        name: 群通知
+      - name: 群通知
         if: github.ref == 'refs/heads/main'
         run: >
           curl -X POST https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=972bdf29-4f16-46ac-9442-a5489e252f9e \
