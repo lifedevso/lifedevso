@@ -37,9 +37,7 @@ export async function GET(
       wx_id: user.weixin.id,
     });
 
-    const nextUrl = request.nextUrl.clone();
-    nextUrl.origin = origin;
-    nextUrl.pathname = state;
+    const nextUrl = new URL(state, origin);
     return NextResponse.redirect(nextUrl);
   } catch (error: any) {
     console.log(error);
