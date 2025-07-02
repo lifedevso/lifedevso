@@ -15,7 +15,9 @@ export function genAuthUrl(state: string) {
   authUrl.searchParams.set("scope", "snsapi_userinfo");
   authUrl.searchParams.set("state", state);
 
-  return authUrl.toString() + "#wechat_redirect";
+  const url = authUrl.toString() + "#wechat_redirect";
+  console.log("genAuthUrl", url);
+  return url;
 }
 
 export function isWechat() {
