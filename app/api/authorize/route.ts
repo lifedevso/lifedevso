@@ -1,11 +1,6 @@
 import { signIn } from "@/auth";
-import { API_NICE_URL } from "@/lib/constant";
+import { API_NICE_URL, WEB_URL } from "@/lib/constant";
 import { NextRequest, NextResponse } from "next/server";
-
-const origin =
-  process.env.NODE_ENV === "test"
-    ? "http://localhost:7766"
-    : "https://www.superai42.com";
 
 export async function GET(
   request: NextRequest,
@@ -37,7 +32,7 @@ export async function GET(
       wx_id: user.weixin.id,
     });
 
-    const nextUrl = new URL(state, origin);
+    const nextUrl = new URL(state, WEB_URL);
     return NextResponse.redirect(nextUrl);
   } catch (error: any) {
     console.log(error);

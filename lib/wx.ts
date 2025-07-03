@@ -1,16 +1,13 @@
-const APPID = "wxae60dbd6c186d1ba";
+import { WEB_URL } from "./constant";
 
-const redirect_uri =
-  process.env.NODE_ENV === "test"
-    ? "http://localhost:7766"
-    : "https://www.superai42.com";
+const APPID = "wxae60dbd6c186d1ba";
 
 export function genAuthUrl(state: string) {
   const authUrl = new URL(
     "https://open.weixin.qq.com/connect/oauth2/authorize"
   );
   authUrl.searchParams.set("appid", APPID);
-  authUrl.searchParams.set("redirect_uri", `${redirect_uri}/api/authorize`);
+  authUrl.searchParams.set("redirect_uri", `${WEB_URL}/api/authorize`);
   authUrl.searchParams.set("response_type", "code");
   authUrl.searchParams.set("scope", "snsapi_userinfo");
   authUrl.searchParams.set("state", state);
